@@ -1,0 +1,10 @@
+.contacts {
+    width: 30%;
+    border-right: 1px solid #252525;
+    padding-right: 20px;
+}
+
+.contacts > ul > li {
+    list-style: none;
+    font-size: 18px;
+}
