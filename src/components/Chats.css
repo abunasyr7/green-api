@@ -1,8 +1,26 @@
 .chats {
     width: 70%;
     text-align: end;
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .chats > p {
     font-size: 18px;
+}
+
+.chats__send-message {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: white;
+}
+
+.chats__header {
+    align-self: start;
+}
+
+.chats__send-message > input {
+    width: 90%;
 }
