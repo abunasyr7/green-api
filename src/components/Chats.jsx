@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import "./Chats.css";
-import SendIcon from "../img/send.png"
-import Reload from "../img/reload.png"
+import SendIcon from "../img/send.png";
+import Reload from "../img/reload.png";
 
 const Chats = ({ host, idInstance, apiTokenInstance, selectedPhoneNumber }) => {
   const [message, setMessage] = useState("");
   const [incomingMessages, setIncomingMessages] = useState([]);
-
-  console.log({incomingMessages})
 
   const formMessage = {
     chatId: `${selectedPhoneNumber}@c.us`,
@@ -65,11 +63,13 @@ const Chats = ({ host, idInstance, apiTokenInstance, selectedPhoneNumber }) => {
     getChatMessages();
   }, [selectedPhoneNumber]);
 
+  console.log({ incomingMessages });
+
   return (
     <div className="chats">
       <div className="chats__header">
-          <p>+{selectedPhoneNumber}</p>
-        </div>
+        <p>+{selectedPhoneNumber}</p>
+      </div>
       <div className="chats__message-container">
         {incomingMessages.length > 0 ? (
           incomingMessages.reverse().map((message, index) => {
@@ -91,22 +91,34 @@ const Chats = ({ host, idInstance, apiTokenInstance, selectedPhoneNumber }) => {
           <div>No messages</div>
         )}
       </div>
-      {selectedPhoneNumber ? (      <div className="chats__footer">
-        <div className="chats__send-message">
-          <button onClick={getChatMessages} className="button-reload">
-            <img src={Reload} alt="Reload" style={{width: 23, height: 23}}/>
-          </button>
-          <input
-            value={message}
-            type="text"
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder="Напишите сообщение"
-          />
-          <button onClick={sendMessage} className="button-send">
-            <img src={SendIcon} alt="Send Icon" style={{width: 23, height: 23}}/>
-          </button>
+      {selectedPhoneNumber ? (
+        <div className="chats__footer">
+          <div className="chats__send-message">
+            <button onClick={getChatMessages} className="button-reload">
+              <img
+                src={Reload}
+                alt="Reload"
+                style={{ width: 23, height: 23 }}
+              />
+            </button>
+            <input
+              value={message}
+              type="text"
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder="Напишите сообщение"
+            />
+            <button onClick={sendMessage} className="button-send">
+              <img
+                src={SendIcon}
+                alt="Send Icon"
+                style={{ width: 23, height: 23 }}
+              />
+            </button>
+          </div>
         </div>
-      </div>) : ""}    
+      ) : (
+        ""
+      )}
     </div>
   );
 };
