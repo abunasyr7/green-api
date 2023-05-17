@@ -1,6 +1,6 @@
 import Modal from "./Modal";
 import { useState } from "react";
-import './InputNumber.css'
+import "./InputNumber.css";
 
 const InputNumber = ({ isOpen, onClose, onAddPhoneNumber }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
