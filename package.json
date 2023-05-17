@@ -2,7 +2,7 @@
   "name": "green-api",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://abunasyr7.github.io/green-api",
+  "homepage": "https://abunasyr7.github.io/green-api/src",
   "scripts": {
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
