@@ -1,14 +1,14 @@
 import "./Contacts.css";
 import MessangerIcon from "../img/messenger.png";
-import { useEffect, useState } from "react";
 import InputNumber from "./InputNumber";
+import { useState } from "react";
 
-const Contacts = ({ numbers, setNumbers }) => {
+const Contacts = ({
+  phoneNumbers,
+  onAddPhoneNumber,
+  setSelectedPhoneNumber,
+}) => {
   const [showInputNumber, setShowInputNumber] = useState(false);
-
-  useEffect(() => {
-    localStorage.setItem("num");
-  });
 
   return (
     <div className="contacts">
@@ -20,26 +20,24 @@ const Contacts = ({ numbers, setNumbers }) => {
         onClick={() => setShowInputNumber(true)}
       />
       <ul>
-        {numbers.map((number) => {
-          if (number !== null) {
-            return (
-              <li className="contacts__container">
-                <div className="photo"></div>
-                <div className="contacts__info">
-                  <h1>{number}</h1>
-                  <p>Message</p>
-                </div>
-              </li>
-            );
-          } else {
-            return "";
-          }
-        })}
+        {phoneNumbers.map((phoneNumber, index) => (
+          <li
+            className="contacts__container"
+            key={index}
+            onClick={() => setSelectedPhoneNumber(phoneNumber)}
+          >
+            <div className="photo"></div>
+            <div className="contacts__info">
+              <h1>{phoneNumber}</h1>
+              <p>Message</p>
+            </div>
+          </li>
+        ))}
       </ul>
       <InputNumber
         isOpen={showInputNumber}
         onClose={() => setShowInputNumber(false)}
-        setNumber={setNumbers}
+        onAddPhoneNumber={onAddPhoneNumber}
       />
     </div>
   );

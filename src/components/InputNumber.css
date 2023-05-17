@@ -1,0 +1,26 @@
+.input-number {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-number > label {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.input-number > input {
+    margin-bottom: 15px;
+    border: none;
+    border-bottom: 1px solid grey;
+    padding: 5px 5px;
+}
+
+.input-number > button {
+    background-color: transparent;
+    font-size: 18px;
+    border-radius: 8px;
+    padding: 5px;
+    background-color:lavenderblush;
+    border: 1px solid lavenderblush;
+}

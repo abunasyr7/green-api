@@ -6,7 +6,22 @@ import { useState } from "react";
 import { REACT_APP_ID_INSTANCE, REACT_APP_API_TOKEN_INSTANCE } from "../env";
 
 const App = () => {
-  const [numbers, setNumbers] = useState([]);
+  const [phoneNumbers, setPhoneNumbers] = useState(() => {
+    const storedNumbers = localStorage.getItem("phoneNumbers");
+    return storedNumbers ? JSON.parse(storedNumbers) : [];
+  });
+
+  const handleAddPhoneNumber = (phoneNumber) => {
+    if (phoneNumber.trim() !== "") {
+      const updatedNumbers = [...phoneNumbers, phoneNumber];
+      setPhoneNumbers(updatedNumbers);
+      localStorage.setItem("phoneNumbers", JSON.stringify(updatedNumbers));
+    }
+  };
+
+  const [selectedPhoneNumber, setSelectedPhoneNumber] = useState("");
+
+  console.log({ selectedPhoneNumber });
 
   const host = "https://api.green-api.com";
 
@@ -17,12 +32,16 @@ const App = () => {
 
   return (
     <div className="app">
-      <Contacts numbers={numbers} setNumbers={setNumbers} />
+      <Contacts
+        phoneNumbers={phoneNumbers}
+        onAddPhoneNumber={handleAddPhoneNumber}
+        setSelectedPhoneNumber={setSelectedPhoneNumber}
+      />
       <Chats
-        number={numbers}
         host={host}
         idInstance={idInstance}
         apiTokenInstance={apiTokenInstance}
+        selectedPhoneNumber={selectedPhoneNumber}
       />
     </div>
   );
