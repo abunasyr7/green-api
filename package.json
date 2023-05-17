@@ -1,14 +1,15 @@
 {
-  "name": "test-app",
+  "name": "green-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "homepage": "https://abunasyr7.github.io/green-api",
   "scripts": {
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
@@ -27,5 +28,11 @@
     "@green-api/whatsapp-api-client": "^0.3.35",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not IE <= 11",
+    "not op_mini all"
+  ]
 }
